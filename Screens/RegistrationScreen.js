@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 
 import {
@@ -14,7 +15,7 @@ import {
 } from "react-native";
 
 const bgImage = require("../assets/images/bg-img.jpg");
-const addAvatarIcon= require("../assets/images/add.png")
+const addAvatarIcon = require("../assets/icons/add.png");
 
 const initialState = {
     name: "",
@@ -32,6 +33,10 @@ const RegistrationScreen = () => {
       email: false,
       password: false,
     });
+  
+  
+  const navigation = useNavigation();
+
 
   const handleInputFocus = (textinput) => {
     setIsFocused({
@@ -164,7 +169,7 @@ const RegistrationScreen = () => {
               <Text style={styles.btnTitle}>Зареєструватися</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity  activeOpacity={0.5}>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate("Login")}>
               <Text style={styles.registerLinkText}>Вже є акаунт? Увійти</Text>
             </TouchableOpacity>
           </View>
@@ -181,7 +186,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   userImage: {
     position: "absolute",
@@ -208,15 +213,15 @@ const styles = StyleSheet.create({
     marginBottom: 33,
   },
   headerTitle: {
+    fontFamily: "Nunito-500",
     fontWeight: "500",
     fontSize: 30,
-    lineHeight: 35,
+    lineHeight: 1.17,
     color: "#212121",
   },
   inputArea: {
     marginBottom: 27,
     flexDirection: "column",
-    
   },
   input: {
     padding: 16,
@@ -224,13 +229,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
 
     backgroundColor: "#F6F6F6",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
     color: "#212121",
     width: 343,
-    height:50
+    height: 50,
   },
 
   showPassword: {
@@ -239,10 +245,11 @@ const styles = StyleSheet.create({
   },
   showPasswordText: {
     color: "#1B4371",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
   },
   btn: {
     width: 343,
@@ -256,18 +263,20 @@ const styles = StyleSheet.create({
 
   btnTitle: {
     color: "#FFFFFF",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
   },
 
   registerLinkText: {
     color: "#1B4371",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
   },
 });
 

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 
 import {
@@ -30,6 +31,9 @@ const RegistrationScreen = () => {
       email: false,
       password: false,
     });
+  
+const navigation = useNavigation();
+
 
   const handleInputFocus = (textinput) => {
     setIsFocused({
@@ -82,11 +86,10 @@ const RegistrationScreen = () => {
                 : 489,
             }}
           >
-              <View style={styles.header}>
+            <View style={styles.header}>
               <Text style={styles.headerTitle}>Увійти</Text>
             </View>
             <View style={styles.inputArea}>
-           
               <TextInput
                 style={{
                   ...styles.input,
@@ -99,8 +102,10 @@ const RegistrationScreen = () => {
                   handleInputFocus("email");
                   setIsShowKeyboard(true);
                 }}
-                onBlur={() => {handleInputBlur("email");
-                setIsShowKeyboard(false)}}
+                onBlur={() => {
+                  handleInputBlur("email");
+                  setIsShowKeyboard(false);
+                }}
                 value={state.email}
                 onChangeText={(value) =>
                   setState((prevState) => ({ ...prevState, email: value }))
@@ -118,8 +123,10 @@ const RegistrationScreen = () => {
                   handleInputFocus("password");
                   setIsShowKeyboard(true);
                 }}
-                onBlur={() => {handleInputBlur("password");
-                setIsShowKeyboard(false)}}
+                onBlur={() => {
+                  handleInputBlur("password");
+                  setIsShowKeyboard(false);
+                }}
                 value={state.password}
                 onChangeText={(value) =>
                   setState((prevState) => ({ ...prevState, password: value }))
@@ -141,8 +148,13 @@ const RegistrationScreen = () => {
               <Text style={styles.btnTitle}>Увійти</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity  activeOpacity={0.5}>
-              <Text style={styles.registerLinkText}>Ще немає акаунту? Зареєструватись</Text>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => navigation.navigate("Registration")}
+            >
+              <Text style={styles.registerLinkText}>
+                Ще немає акаунту? Зареєструватись
+              </Text>
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -173,15 +185,15 @@ const styles = StyleSheet.create({
     marginBottom: 33,
   },
   headerTitle: {
+    fontFamily: "Nunito-500",
     fontWeight: "500",
     fontSize: 30,
-    lineHeight: 35,
+    lineHeight: 1.17,
     color: "#212121",
   },
   inputArea: {
     marginBottom: 27,
     flexDirection: "column",
-    
   },
   input: {
     padding: 16,
@@ -189,13 +201,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
 
     backgroundColor: "#F6F6F6",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
     color: "#212121",
     width: 343,
-    height:50,
+    height: 50,
   },
 
   showPassword: {
@@ -204,10 +217,11 @@ const styles = StyleSheet.create({
   },
   showPasswordText: {
     color: "#1B4371",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
   },
   btn: {
     width: 343,
@@ -221,18 +235,20 @@ const styles = StyleSheet.create({
 
   btnTitle: {
     color: "#FFFFFF",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
   },
 
   registerLinkText: {
     color: "#1B4371",
+    fontFamily: "Nunito-400",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 1.19,
   },
 });
 
